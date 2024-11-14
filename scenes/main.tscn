@@ -172,8 +172,6 @@ script = ExtResource("2_bvyxe")
 
 [node name="Bullets" type="Node2D" parent="World/Entities"]
 
-[node name="Objects" type="Node2D" parent="World/Entities"]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World"]
 libraries = {
 "": SubResource("AnimationLibrary_k1l2f")

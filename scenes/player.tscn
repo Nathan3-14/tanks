@@ -37,5 +37,8 @@ rotation = -1.5708
 scale = Vector2(2, 1.53846)
 texture = ExtResource("3_vv0vg")
 
+[node name="ShootMarker" type="Marker2D" parent="TankParts/Barrel"]
+position = Vector2(40, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tpksh")
