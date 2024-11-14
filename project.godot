@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1344
 window/size/viewport_height=768
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [layer_names]
 
 2d_physics/layer_1="World"

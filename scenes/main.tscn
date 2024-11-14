@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://btfiv2e0ar52m"]
+[gd_scene load_steps=13 format=4 uid="uid://btfiv2e0ar52m"]
 
 [ext_resource type="Script" path="res://scripts/title.gd" id="1_0nqp3"]
 [ext_resource type="Script" path="res://scripts/player_setup.gd" id="2_bvyxe"]
 [ext_resource type="TileSet" uid="uid://dinbll48yqdqa" path="res://objects/floor_tiles.tres" id="2_q1yj7"]
 [ext_resource type="TileSet" uid="uid://bhsxjw4blld8m" path="res://objects/object_tiles.tres" id="3_4sovf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qij8e"]
+size = Vector2(64, 768)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1war2"]
+size = Vector2(1472, 64)
 
 [sub_resource type="Animation" id="Animation_t04qi"]
 length = 0.001
@@ -139,6 +145,24 @@ tile_set = ExtResource("2_q1yj7")
 [node name="TileMapLayer2" type="TileMapLayer" parent="World/WorldLayers"]
 tile_map_data = PackedByteArray("AAAOAAgAAAAAAAAAAQAOAAkAAAAAAAAAAQAWAAYAAAAAAAAAAQAWAAcAAAAAAAAAAQAQAAIAAAAAAAAAAQANAAMAAAAAAAAAAQAZAAsAAAAAAAAAAQAPAA4AAAAAAAAAAQAQABIAAAAAAAAAAQAJAA4AAAAAAAAAAQAJABQAAAAAAAAAAQAeABAAAAAAAAAAAQAhAAIAAAAAAAAAAQAYAAEAAAAAAAAAAQAYAAIAAAAAAAAAAQAYAAMAAAAAAAAAAQAiAAcAAAAAAAAAAQAhAAgAAAAAAAAAAQAhAAkAAAAAAAAAAQAfABEAAAAAAAAAAQAfABIAAAAAAAAAAQAgABMAAAAAAAAAAQAPAA8AAAAAAAAAAQAPABAAAAAAAAAAAQAOABEAAAAAAAAAAQAIABUAAAAAAAAAAQAJABMAAAAAAAAAAQAJAA0AAAAAAAAAAQAIAAwAAAAAAAAAAQAIAAsAAAAAAAAAAQAHAAoAAAAAAAAAAQAKAAEAAAAAAAAAAQANAAAAAAAAAAAAAQAZABcAAAAAAAAAAQAWAA8AAAAAAAAAAQAGAAQAAAAAAAAAAQAWABAAAAAAAAAAAgAcAA8AAAAAAAAAAgARAAkAAAAAAAAAAgAVAAAAAAAAAAAAAgAOAAEAAAAAAAAAAgAPABcAAAAAAAAAAgAFABQAAAAAAAAAAgA=")
 tile_set = ExtResource("3_4sovf")
+
+[node name="Boundry" type="StaticBody2D" parent="World/WorldLayers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WorldLayers/Boundry"]
+position = Vector2(-32, 384)
+shape = SubResource("RectangleShape2D_qij8e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/WorldLayers/Boundry"]
+position = Vector2(1376, 384)
+shape = SubResource("RectangleShape2D_qij8e")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/WorldLayers/Boundry"]
+position = Vector2(672, 800)
+shape = SubResource("RectangleShape2D_1war2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/WorldLayers/Boundry"]
+position = Vector2(672, -32)
+shape = SubResource("RectangleShape2D_1war2")
 
 [node name="Entities" type="Node2D" parent="World"]
 position = Vector2(672, 384)
