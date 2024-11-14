@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://be32uq8avwbyi"]
+
+[ext_resource type="Texture2D" uid="uid://bc87rpmv27cy5" path="res://assets/sprites/tankGreen_bullet.png" id="1_hlgah"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64fme"]
+radius = 8.0
+height = 16.0
+
+[node name="Shell" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hlgah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_64fme")

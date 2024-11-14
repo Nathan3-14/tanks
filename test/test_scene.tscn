@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfcsum15br7hl"]
+
+[ext_resource type="Texture2D" uid="uid://hox268844ufk" path="res://icon.svg" id="1_ixi55"]
+[ext_resource type="PackedScene" uid="uid://pyalno2g5qcw" path="res://scenes/player.tscn" id="1_jv8t6"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(232, 1.52588e-05)
+scale = Vector2(10.625, 6.90625)
+texture = ExtResource("1_ixi55")
+
+[node name="Player" parent="." instance=ExtResource("1_jv8t6")]
+controller_index = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

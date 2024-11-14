@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://pyalno2g5qcw"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jj5vs"]
+[ext_resource type="Texture2D" uid="uid://bisyddh7n0kpn" path="res://assets/sprites/tankGreen_body.png" id="2_fdwnw"]
+[ext_resource type="Texture2D" uid="uid://b60giotfljyji" path="res://assets/sprites/tankGreen_barrel3.png" id="3_vv0vg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpksh"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_jj5vs")
+
+[node name="TankParts" type="Node2D" parent="."]
+
+[node name="Body" type="Node2D" parent="TankParts"]
+
+[node name="Body" type="Sprite2D" parent="TankParts/Body"]
+position = Vector2(2.38419e-07, 2.38419e-06)
+rotation = -1.5708
+scale = Vector2(1.68421, 1.77778)
+texture = ExtResource("2_fdwnw")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="TankParts/Body"]
+position = Vector2(-8, 0)
+remote_path = NodePath("../../Barrel")
+update_rotation = false
+update_scale = false
+
+[node name="Barrel" type="Node2D" parent="TankParts"]
+position = Vector2(-8, 0)
+
+[node name="Sprite" type="Sprite2D" parent="TankParts/Barrel"]
+position = Vector2(20, 0)
+rotation = -1.5708
+scale = Vector2(2, 1.53846)
+texture = ExtResource("3_vv0vg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tpksh")

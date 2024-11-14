@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bhsxjw4blld8m"]
+
+[ext_resource type="PackedScene" uid="uid://da1g0j84n3rg5" path="res://scenes/objects/barrel_side.tscn" id="1_3mw0p"]
+[ext_resource type="PackedScene" uid="uid://bv3tdc8fn2prr" path="res://scenes/objects/barrel_top.tscn" id="2_6e562"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6f42e"]
+scenes/1/scene = ExtResource("1_3mw0p")
+scenes/2/scene = ExtResource("2_6e562")
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_6f42e")
