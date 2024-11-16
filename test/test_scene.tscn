@@ -10,8 +10,14 @@ position = Vector2(232, 1.52588e-05)
 scale = Vector2(10.625, 6.90625)
 texture = ExtResource("1_ixi55")
 
-[node name="Player" parent="." instance=ExtResource("1_jv8t6")]
-controller_index = 0
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="ActivePlayer" parent="Players" instance=ExtResource("1_jv8t6")]
+controller_index = 0
+
+[node name="DummyPlayer" parent="Players" instance=ExtResource("1_jv8t6")]
+
+[node name="Bullets" type="Node2D" parent="."]

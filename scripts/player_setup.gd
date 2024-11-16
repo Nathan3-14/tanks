@@ -7,7 +7,6 @@ func setup_players(player_count: int):
 	if player_count > len(Input.get_connected_joypads()):
 		print("BAD PLAYER COUNT")
 		queue_free()
-	print(Input.get_connected_joypads())
 	
 	for player_controller_id in range(player_count):
 		var player_object = player_scene.instantiate()

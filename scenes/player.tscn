@@ -1,15 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://pyalno2g5qcw"]
+[gd_scene load_steps=8 format=3 uid="uid://pyalno2g5qcw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jj5vs"]
 [ext_resource type="Texture2D" uid="uid://bisyddh7n0kpn" path="res://assets/sprites/tankGreen_body.png" id="2_fdwnw"]
 [ext_resource type="Texture2D" uid="uid://b60giotfljyji" path="res://assets/sprites/tankGreen_barrel3.png" id="3_vv0vg"]
+[ext_resource type="Texture2D" uid="uid://dwdb4g2vnnfgn" path="res://assets/sprites/circle_bar.png" id="4_nivbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpksh"]
 size = Vector2(64, 64)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_477dd"]
+bg_color = Color(0.941176, 0.192157, 0.054902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abwqg"]
+bg_color = Color(0.266667, 0.635294, 0.0588235, 1)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 15
+collision_mask = 7
 script = ExtResource("1_jj5vs")
 
 [node name="TankParts" type="Node2D" parent="."]
@@ -42,3 +49,49 @@ position = Vector2(40, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tpksh")
+
+[node name="PlayerInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Reload" type="TextureProgressBar" parent="PlayerInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -76.0
+offset_right = 225.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+max_value = 10.0
+step = 0.1
+value = 10.0
+fill_mode = 4
+texture_under = ExtResource("4_nivbp")
+texture_progress = ExtResource("4_nivbp")
+tint_under = Color(0, 0, 0, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.125
+anchor_right = 0.75
+anchor_bottom = 0.1875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_477dd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_abwqg")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true

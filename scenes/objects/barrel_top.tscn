@@ -1,14 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bv3tdc8fn2prr"]
 
-[ext_resource type="PackedScene" uid="uid://dj2874bp88u2j" path="res://scenes/object.tscn" id="1_qrc30"]
+[ext_resource type="PackedScene" uid="uid://dj2874bp88u2j" path="res://scenes/objects/object.tscn" id="1_qrc30"]
 [ext_resource type="Texture2D" uid="uid://bkwl0d1pnsjdj" path="res://assets/objects/barrelRust_top.png" id="2_n2r8o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s4mk2"]
-radius = 16.0
+radius = 32.0
 
 [node name="BarrelTop" instance=ExtResource("1_qrc30")]
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(-2.86102e-06, 1.90735e-06)
+scale = Vector2(2.66667, 2.66667)
 texture = ExtResource("2_n2r8o")
 
 [node name="CollisionShape2D" parent="." index="1"]
