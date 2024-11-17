@@ -15,6 +15,21 @@ bg_color = Color(0.941176, 0.192157, 0.054902, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abwqg"]
 bg_color = Color(0.266667, 0.635294, 0.0588235, 1)
 
+[sub_resource type="Animation" id="Animation_7jolb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankParts/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_r561r"]
 resource_name = "Shoot"
 step = 0.01
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-8, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_7jolb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TankParts/Body:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fqpot"]
@@ -75,6 +75,7 @@ update_scale = false
 position = Vector2(-4, 0)
 
 [node name="Flame" type="Sprite2D" parent="TankParts/Barrel"]
+visible = false
 position = Vector2(36, 0)
 rotation = 1.5708
 texture = ExtResource("5_upl06")
@@ -88,11 +89,9 @@ texture = ExtResource("3_vv0vg")
 position = Vector2(24, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_tpksh")
 
 [node name="PlayerInfo" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -64.0

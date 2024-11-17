@@ -42,7 +42,7 @@ func shoot():
 	shell_scene.parent = self
 	print(shell_scene.global_position)
 	$PlayerInfo/Reload.value = 0
-	$AnimationPlayer.play("Shoot") #! Make animation be proportional to the direction of barrel (maybe not in animationplayer)
+	#$AnimationPlayer.play("Shoot") #! Make animation be proportional to the direction of barrel (maybe not in animationplayer)
 
 func _physics_process(delta):
 	if controller_index == -1:
