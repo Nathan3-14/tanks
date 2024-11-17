@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bmp62xdni7s35" path="res://assets/objects/barrelRust_side.png" id="2_1ctnc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kl6no"]
-size = Vector2(48, 64)
+size = Vector2(16, 32)
 
 [node name="Barrel" instance=ExtResource("1_5dgmr")]
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(-4.76837e-07, -5.68434e-14)
-scale = Vector2(2.4, 2.28571)
+position = Vector2(9.53674e-07, -2.86102e-05)
+scale = Vector2(0.8, 1.14285)
 texture = ExtResource("2_1ctnc")
 
 [node name="CollisionShape2D" parent="." index="1"]

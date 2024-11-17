@@ -1,18 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://pyalno2g5qcw"]
+[gd_scene load_steps=12 format=3 uid="uid://pyalno2g5qcw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jj5vs"]
 [ext_resource type="Texture2D" uid="uid://bisyddh7n0kpn" path="res://assets/sprites/tankGreen_body.png" id="2_fdwnw"]
 [ext_resource type="Texture2D" uid="uid://b60giotfljyji" path="res://assets/sprites/tankGreen_barrel3.png" id="3_vv0vg"]
 [ext_resource type="Texture2D" uid="uid://dwdb4g2vnnfgn" path="res://assets/sprites/circle_bar.png" id="4_nivbp"]
+[ext_resource type="Texture2D" uid="uid://c8isk3s3cvg55" path="res://assets/sprites/shotOrange.png" id="5_upl06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpksh"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_477dd"]
 bg_color = Color(0.941176, 0.192157, 0.054902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abwqg"]
 bg_color = Color(0.266667, 0.635294, 0.0588235, 1)
+
+[sub_resource type="Animation" id="Animation_r561r"]
+resource_name = "Shoot"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankParts/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-8, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7jolb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankParts/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fqpot"]
+_data = {
+"RESET": SubResource("Animation_7jolb"),
+"Shoot": SubResource("Animation_r561r")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
@@ -24,33 +62,37 @@ script = ExtResource("1_jj5vs")
 [node name="Body" type="Node2D" parent="TankParts"]
 
 [node name="Body" type="Sprite2D" parent="TankParts/Body"]
-position = Vector2(2.38419e-07, 2.38419e-06)
 rotation = -1.5708
-scale = Vector2(1.68421, 1.77778)
 texture = ExtResource("2_fdwnw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="TankParts/Body"]
-position = Vector2(-8, 0)
+position = Vector2(-4, 0)
 remote_path = NodePath("../../Barrel")
 update_rotation = false
 update_scale = false
 
 [node name="Barrel" type="Node2D" parent="TankParts"]
-position = Vector2(-8, 0)
+position = Vector2(-4, 0)
+
+[node name="Flame" type="Sprite2D" parent="TankParts/Barrel"]
+position = Vector2(36, 0)
+rotation = 1.5708
+texture = ExtResource("5_upl06")
 
 [node name="Sprite" type="Sprite2D" parent="TankParts/Barrel"]
-position = Vector2(20, 0)
+position = Vector2(12, 0)
 rotation = -1.5708
-scale = Vector2(2, 1.53846)
 texture = ExtResource("3_vv0vg")
 
 [node name="ShootMarker" type="Marker2D" parent="TankParts/Barrel"]
-position = Vector2(40, 0)
+position = Vector2(24, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_tpksh")
 
 [node name="PlayerInfo" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -64.0
@@ -65,13 +107,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -76.0
-offset_right = 225.0
-offset_bottom = 228.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 240.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 max_value = 10.0
 step = 0.1
 value = 10.0
@@ -84,9 +126,9 @@ tint_under = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
-anchor_top = 0.125
+anchor_top = 0.273438
 anchor_right = 0.75
-anchor_bottom = 0.1875
+anchor_bottom = 0.335938
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_477dd")
@@ -95,3 +137,8 @@ max_value = 5.0
 value = 5.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fqpot")
+}
