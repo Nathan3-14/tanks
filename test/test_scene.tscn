@@ -17,7 +17,9 @@ zoom = Vector2(2, 2)
 
 [node name="ActivePlayer" parent="Players" instance=ExtResource("1_jv8t6")]
 controller_index = 0
+kickback_timer = 1.0
 
 [node name="DummyPlayer" parent="Players" instance=ExtResource("1_jv8t6")]
+kickback_timer = 1.0
 
 [node name="Bullets" type="Node2D" parent="."]

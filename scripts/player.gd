@@ -3,6 +3,7 @@ class_name Player
 
 const SPEED = 8500
 @export var controller_index: int = -1
+@export var kickback_timer = 0.0
 var last_move_position = Vector2(0, 1)
 var x_vel
 var y_vel
@@ -33,6 +34,9 @@ func rotate_player_barrel():
 		look_pos = look_vector
 	$TankParts/Barrel.rotation = look_pos.angle()
 
+func shoot_animation():
+	$TankParts/Barrel/Flame.visible = true
+
 func shoot():
 	var shell_scene = shell.instantiate()
 	print($TankParts/Barrel/ShootMarker.global_position)
@@ -42,11 +46,16 @@ func shoot():
 	shell_scene.parent = self
 	print(shell_scene.global_position)
 	$PlayerInfo/Reload.value = 0
-	#$AnimationPlayer.play("Shoot") #! Make animation be proportional to the direction of barrel (maybe not in animationplayer)
+	$AnimationPlayer.play("Shoot")
+
 
 func _physics_process(delta):
+	print(kickback_timer)
 	if controller_index == -1:
 		return
+	
+	var barrel_rotation = deg_to_rad($TankParts/Barrel.rotation_degrees)
+	position += Vector2(-8, 0).rotated(barrel_rotation) * kickback_timer
 	
 	x_vel = Input.get_joy_axis(controller_index, JOY_AXIS_LEFT_X)
 	y_vel = Input.get_joy_axis(controller_index, JOY_AXIS_LEFT_Y)
